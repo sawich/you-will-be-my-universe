@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        justify-items: center;
+      "
+    >
+      <div style="font-style: italic; font-weight: bold" id="text1">
+        Ты будешь моей вселенной?
+      </div>
+      <div
+        style="
+          font-style: italic;
+          font-weight: bold;
+          text-shadow: 0 0 3px white, 0 0 3px white;
+          color: brown;
+          display: none;
+        "
+        id="text2"
+      >
+        Урааааа, спасибо!
+      </div>
+
+      <img src="/img/dropheart.gif" alt="" srcset="" id="img" />
+
+      <div style="display: flex; gap: 50px">
+        <button type="button" id="yes">Да</button>
+        <button type="button" id="no">Нет</button>
+      </div>
+    </div>
+
+    <script>
+      const rand = (x, y) => Math.random() * (y - x) + x;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("no").addEventListener("mouseenter", (e) => {
+          const target = e.target;
+
+          target.style.position = "absolute";
+          target.style.left = `${rand(10, 90)}%`;
+          target.style.top = `${rand(10, 90)}%`;
+        });
+
+        document.getElementById("yes").addEventListener("click", () => {
+          document.getElementById("img").src = "/img/endheart.gif";
+          document.getElementById("text1").style.display = "none";
+          document.getElementById("text2").style.display = "block";
+
+          document.getElementById("no").style.display = "none";
+          document.getElementById("yes").style.display = "none";
+        });
+      });
+    </script>
+
+    <style>
+      body {
+        background: #000 url("/img/bgheart.gif");
+        font-size: 40px;
+      }
+
+      button {
+        background: red;
+        border: none;
+        padding: 20px;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </body>
+</html>
